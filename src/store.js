@@ -1,31 +1,37 @@
+import { useActionState } from "react";
+
 export const initialStore=()=>{
   return{
     message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
+    people: [],
+    planets: [],
+    vehicles: [],
+    favorites: [],
   }
 }
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'add_task':
+    case 'import':
 
-      const { id,  color } = action.payload
+      return { ...store, people: action.payload.people, planets: action.payload.planets, vehicles: action.payload.vehicles};
 
-      return {
-        ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
-      };
+    case 'add_favorite':
+  if (store.favorites.find(fav => fav.name === action.payload.name)) {
+    return store
+  }
+  else {
+    return {
+    ...store,
+    favorites: [...store.favorites, action.payload],
+  };}
+
+  case 'remove_favorite':
+  return {
+    ...store,
+    favorites: store.favorites.filter((_, i) => i !== action.payload)
+  };
+
     default:
       throw Error('Unknown action.');
   }    
