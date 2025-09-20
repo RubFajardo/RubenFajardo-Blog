@@ -1,7 +1,5 @@
-# WebApp Template with React JS
+# WebApp Test / BLOG Star Wars
 
-
-Used by 4Geeks.com and 4Geeks Academy students, this template helps to bootstrap your first multi-page web applications by integrating with React latest version, vercel deployments and [Vite](https://4geeks.com/lesson/intro-to-vite-module-bundler) for bundling.
 
 ### Getting stated:
 
